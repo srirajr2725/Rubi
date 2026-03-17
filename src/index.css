@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta+Malar:wght@300;400;600;700&family=Outfit:wght@300;400;600;700&display=swap');
+
+:root {
+  --primary: #B00000;
+  --primary-deep: #7D0000;
+  --secondary: #E00000;
+  --accent: #B00000;
+  --accent-gold: #D4AF37;
+  --bg: #FFFFFF;
+  --bg-secondary: #F9F9F9;
+  --card-bg: #FFFFFF;
+  --text: #121212;
+  --text-muted: #666666;
+  --on-primary: #FFFFFF;
+  --glass: rgba(255, 255, 255, 0.9);
+  --glass-border: rgba(176, 0, 0, 0.1);
+  --font-main: 'Outfit', sans-serif;
+  --font-tamil: 'Mukta Malar', sans-serif;
+  --ruby-glow: 0 10px 40px rgba(176, 0, 0, 0.12);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+  line-height: 1.6;
+}
+
+@keyframes mesh-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes slide-up-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-reveal {
+  animation: slide-up-reveal 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.mesh-bg {
+  background: linear-gradient(-45deg, #FFFFFF, #FFFBFB, #FFF5F5, #FFFBFB, #FFFFFF);
+  background-size: 400% 400%;
+  animation: mesh-gradient 12s ease-in-out infinite;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
