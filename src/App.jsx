@@ -2,7 +2,21 @@ import React, { useState, useEffect, useRef } from 'react';
 import './App.css';
 
 function App() {
-  const [timeLeft, setTimeLeft] = useState(600);
+  const [timeLeft, setTimeLeft] = useState(() => {
+    const savedEndTime = localStorage.getItem('rubyTimerEndTime');
+    const now = Date.now();
+    
+    if (savedEndTime) {
+      const remaining = Math.max(0, Math.floor((parseInt(savedEndTime) - now) / 1000));
+      return remaining;
+    } else {
+      const initialTime = 600;
+      const endTime = now + initialTime * 1000;
+      localStorage.setItem('rubyTimerEndTime', endTime.toString());
+      return initialTime;
+    }
+  });
+
   const [isTimerVisible, setIsTimerVisible] = useState(false);
   const scrollTimeout = useRef(null);
   const sliderRef = useRef(null);
@@ -11,10 +25,16 @@ function App() {
   useEffect(() => {
     if (timeLeft <= 0) return;
     const timer = setInterval(() => {
-      setTimeLeft(prev => prev - 1);
+      setTimeLeft(prev => {
+        if (prev <= 1) {
+          clearInterval(timer);
+          return 0;
+        }
+        return prev - 1;
+      });
     }, 1000);
     return () => clearInterval(timer);
-  }, [timeLeft]);
+  }, []);
 
   // Scroll detection logic
   useEffect(() => {
