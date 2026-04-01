@@ -18,9 +18,81 @@ function App() {
   });
 
   const [isTimerVisible, setIsTimerVisible] = useState(false);
+  const [activeFaq, setActiveFaq] = useState(null);
   const scrollTimeout = useRef(null);
   const sliderRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const faqData = [
+    {
+      q: "1. இந்த புத்தகம் யாருக்கு பயன்படும்?",
+      a: "இந்த புத்தகம் தினசரி சிறிய உடல் பிரச்சினைகள் அனுபவிப்பவர்கள், மன அழுத்தம் மற்றும் தூக்கமின்மை உள்ளவர்கள், இயற்கை முறையில் குணமடைய விரும்புபவர்கள் ஆகியோருக்குப் பயனுள்ளதாக இருக்கும். எளிய முறையில் தங்களைத் தாங்களே குணப்படுத்த விரும்பும் அனைவருக்கும் இது ஒரு முழுமையான வழிகாட்டியாக செயல்படும்."
+    },
+    {
+      q: "2. இந்த முறைகள் பாதுகாப்பானதா?",
+      a: "இந்த முறைகள் முழுமையாக பாதுகாப்பானவை. பக்கவிளைவுகள் எதுவும் இல்லை. உட்கொள்ள வேண்டிய மருந்துகள் இதில் இல்லை. இது முழுக்க வெளிப்புறத்தில் செய்யப்படும் Non-Invasive Healing Method ஆகும்."
+    },
+    {
+      q: "3. இந்த புத்தகத்தை பயன்படுத்த மருத்துவ அறிவு தேவைப்படுமா?",
+      a: "மருத்துவ அறிவு தேவையில்லை. இந்த புத்தகம் மிகவும் எளிமையான முறையில் எழுதப்பட்டுள்ளது. யாரும் படித்தவுடன் உடனே புரிந்து கொண்டு செயல்படுத்த முடியும்."
+    },
+    {
+      q: "4. இந்த முறைகள் எவ்வளவு நேரத்தில் வேலை செய்யும்?",
+      a: "பல சந்தர்ப்பங்களில் சில நிமிடங்களிலேயே நிவாரணம் கிடைக்கலாம். தொடர்ந்து பயன்படுத்தும் போது நீண்டநாள் மற்றும் நிலையான பலன்களை அனுபவிக்க முடியும்."
+    },
+    {
+      q: "5. இந்த புத்தகத்தில் எத்தனை பிரச்சினைகளுக்கு தீர்வு உள்ளது?",
+      a: "இந்த புத்தகம் 20 தினசரி வாழ்க்கை பிரச்சினைகளுக்கு 100-க்கும் மேற்பட்ட இயற்கை தீர்வுகளை வழங்குகிறது. ஒவ்வொரு பிரச்சினைக்கும் பல்வேறு முறைகள் தெளிவாக விளக்கப்பட்டுள்ளன."
+    },
+    {
+      q: "6. இந்த முறைகளை தினமும் பயன்படுத்த வேண்டுமா?",
+      a: "அவசியமில்லை. பிரச்சினை ஏற்பட்டபோது பயன்படுத்தலாம். ஆனால் தினசரி பயன்படுத்தினால் உடலின் சமநிலை மற்றும் ஆரோக்கியம் மேம்படும்."
+    },
+    {
+      q: "7. விதை தெரபி (Seed Therapy) எப்படி வேலை செய்கிறது?",
+      a: "கைகள் மற்றும் கால்களில் உள்ள குறிப்பிட்ட புள்ளிகள் உடலின் பல்வேறு உறுப்புகளுடன் தொடர்புடையவை. அந்த புள்ளிகளில் விதைகளை வைத்து மெதுவாக அழுத்தம் கொடுத்தால், உடலின் இயற்கை குணப்படுத்தும் செயல்முறை தூண்டப்படுகிறது."
+    },
+    {
+      q: "8. எந்த விதைகளை பயன்படுத்த வேண்டும்?",
+      a: "கடுகு, வெந்தயம், பயறு வகைகள் போன்ற எளிதில் கிடைக்கும் விதைகளை பயன்படுத்தலாம். பொதுவாக உங்கள் வீட்டிலேயே இருக்கும் சாதாரண விதைகள் போதுமானவை."
+    },
+    {
+      q: "9. இந்த முறைகள் குழந்தைகள் மற்றும் வயதானவர்களுக்கு பயன்படுத்தலாமா?",
+      a: "ஆம். இந்த முறைகள் அனைத்து வயதினருக்கும் பாதுகாப்பானவை. குழந்தைகள் முதல் முதியவர்கள் வரை யாரும் பயன்படுத்தலாம்."
+    },
+    {
+      q: "10. இந்த புத்தகம் வாங்கிய பிறகு உடனே பயன்படுத்த முடியுமா?",
+      a: "ஆம். இது “Read and Apply” வகை புத்தகம். படித்த உடனே நடைமுறையில் பயன்படுத்தும் வகையில் வடிவமைக்கப்பட்டுள்ளது."
+    },
+    {
+      q: "11. இது மாத்திரைக்கு மாற்றாக பயன்படுத்தலாமா?",
+      a: "சிறிய உடல் பிரச்சினைகளுக்கு இயற்கை மாற்று தீர்வாக பயன்படுத்தலாம். ஆனால் பெரிய அல்லது தீவிரமான உடல்நல பிரச்சினைகளுக்கு மருத்துவர் ஆலோசனை அவசியம்."
+    },
+    {
+      q: "12. இந்த புத்தகத்தில் என்ன கற்றுக்கொள்ள முடியும்?",
+      a: "இந்த புத்தகம் உங்கள் உடலை புரிந்து கொள்ளும் திறனை வளர்க்கிறது. எந்த பிரச்சினைக்கு என்ன செய்ய வேண்டும் என்பதை தெளிவாக கற்றுக்கொள்ள முடியும். உடனடி நிவாரணம் பெறும் முறைகளையும் இதில் அறியலாம். மேலும், Self-Healing திறனை நீங்கள் வளர்த்துக்கொள்ள முடியும்."
+    },
+    {
+      q: "13. இந்த புத்தகம் என்ன வித்தியாசம்?",
+      a: "இது ஒரு சாதாரண தகவல் புத்தகம் அல்ல. இது முழுமையான செயல்பாட்டு கையேடு. Step-by-step வழிகாட்டலுடன், உடனடியாக பயன்படுத்தக்கூடிய முறைகள் இதில் வழங்கப்பட்டுள்ளன."
+    },
+    {
+      q: "14. இந்த முறைகள் உண்மையிலேயே வேலை செய்கிறதா?",
+      a: "இந்த முறைகள் உலகம் முழுவதும் பலரால் பயன்படுத்தப்பட்டு வருகின்றன. தொடர்ந்து மற்றும் சரியான முறையில் பயன்படுத்தினால், மாற்றங்களை அனுபவிக்க முடியும்."
+    },
+    {
+      q: "15. நான் இதை வாங்க வேண்டிய முக்கிய காரணம் என்ன?",
+      a: "இந்த புத்தகம் உங்கள் ஆரோக்கியத்தை உங்கள் கட்டுப்பாட்டுக்குள் கொண்டு வரும். உடனடி மற்றும் இயற்கையான தீர்வுகளை வழங்கும். மருந்துகளின் மீது நம்பிக்கையை குறைக்கும். இது ஒரு முறை கற்றுக்கொண்டால் வாழ்நாள் முழுவதும் பயன்படும் அறிவாக இருக்கும்."
+    },
+    {
+      q: "16. இந்த முறைகளை செயல்படுத்த தேவையான பொருட்கள் எளிதாக கிடைக்குமா?",
+      a: "ஆம். இந்த முறைகளுக்கு தேவையான பொருட்கள் மிகவும் எளிதாக கிடைக்கும் மற்றும் குறைந்த செலவில் வாங்க முடியும். \n\nColor Therapy (நிற சிகிச்சை): சாதாரண chart markers அல்லது sketch pens போதுமானவை. \n\nNumber Therapy (எண் சிகிச்சை): குறிப்பிட்ட எண்களை அதே நிறத்தில் எழுத வேண்டும். \n\nSeed Therapy (விதை சிகிச்சை): விதைகளை ஒட்ட surgical tape பயன்படுத்தப்படுகிறது. இது எந்த மருத்துவக் கடையிலும் கிடைக்கும்."
+    },
+    {
+      q: "17. இந்த முறைகளை பயன்படுத்துவது சிக்கலானதா?",
+      a: "இல்லை. இந்த முறைகள் மிகவும் எளிமையானவை. தினசரி வாழ்க்கையில் யாரும் சுலபமாக இணைத்து பயன்படுத்தக்கூடிய வகையில் வடிவமைக்கப்பட்டுள்ளன."
+    }
+  ];
 
   useEffect(() => {
     if (timeLeft <= 0) return;
@@ -99,15 +171,15 @@ function App() {
         <div className="header-glass">
           <img src="/assets/ruby-logo.png" alt="Ruby Logo" className="animate-float" />
           <div className="brand-info">
-            <h1 className="shine-text">RUBY WELLNESS</h1>
-            <span className="tagline">இயற்கை வாழ்வியல் மையம்</span>
+            <h1 className="shine-text">RUBY WELLNESS CENTER</h1>
+            <span className="tagline">ART OF HEALTHY LIVING</span>
           </div>
         </div>
       </header>
 
       <section className="hero-modern animate-reveal">
         <div className="hero-content">
-          <div className="hero-badge">BEST NATURAL HEALING 2024</div>
+          <div className="hero-badge">BEST NATURAL HEALING 2026</div>
           <h2 className="title-large">20 அன்றாட வாழ்க்கை சிக்கல்கள் <br /> <span className="highlight">100 இயற்கை தீர்வுகள்</span></h2>
           <p className="description">பாரம்பரிய முறைகளை நவீன வடிவில் அனுபவியுங்கள்.</p>
         </div>
@@ -148,7 +220,8 @@ function App() {
           <p>ஆனால் உண்மையில் —</p>
         </div>
         <div className="pain-warning">
-          <p>⚠️ இவையே உங்கள் நாள் முழுவதையும் பாதிக்கும் மிகப்பெரிய காரணங்கள். சிறிய பிரச்சினைகள்... மெதுவாக உங்கள் வாழ்க்கையின் தரத்தை குறைத்து கொண்டே இருக்கும்.</p>
+          <div className="warning-emoji-large">⚠️</div>
+          <p>இவையே உங்கள் நாள் முழுவதையும் பாதிக்கும் மிகப்பெரிய காரணங்கள். சிறிய பிரச்சினைகள்... மெதுவாக உங்கள் வாழ்க்கையின் தரத்தை குறைத்து கொண்டே இருக்கும்.</p>
         </div>
       </section>
 
@@ -189,14 +262,14 @@ function App() {
           <h2>உங்கள் உடலுக்கான ரிமோட்</h2>
           <p>இன்று நாம் வாழும் உலகம் — “ரிமோட் உலகம்”. TV, Fan, AC எல்லாவற்றுக்கும் ரிமோட் தேவைப்படுகிறது. ஆனால் உங்கள் உடலுக்கான ரிமோட் — உங்கள் கைகளிலேயே உள்ளது!</p>
           <div className="remote-highlight">
-            ✨ உங்கள் உள்ளங்கைகள் & பாதங்கள்
+            உங்கள் உள்ளங்கைகள் & பாதங்கள்
           </div>
           <p>இவற்றில் உங்கள் உடலின் அனைத்து உறுப்புகளையும் கட்டுப்படுத்தும் 📱 <strong>“ரிமோட் பாயிண்ட்ஸ்”</strong> உள்ளன. இதுவே Sujok மருத்துவத்தின் அடிப்படை.</p>
           <div className="remote-points">
             <p>✅ மருந்துகள் இல்லாமல்</p>
             <p>✅ பக்கவிளைவுகள் இல்லாமல்</p>
             <p>✅ யாருடைய உதவியும் இல்லாமல்</p>
-            <p className="remote-final">✨ உங்கள் ஆரோக்கியத்தை நீங்களே கையாள முடியும்!</p>
+            <p className="remote-final">நீங்களே உங்கள் ஆரோக்கியத்தை கையாள முடியும்!</p>
           </div>
         </div>
       </section>
@@ -204,13 +277,9 @@ function App() {
       <section className="solution-bridge-section animate-reveal">
         <div className="bridge-card">
           <h3 className="bridge-title">ஒரு நிமிடம் சிந்தியுங்கள்…</h3>
-          <p className="bridge-intro">நீங்கள் உங்கள் பிரச்சினைகளை:</p>
-          <div className="impact-grid">
-            <span className="impact-item">👉 இயற்கையாக</span>
-            <span className="impact-item">👉 எளிதாக</span>
-            <span className="impact-item">👉 பாதுகாப்பாக</span>
-          </div>
-          <p className="bridge-question">தீர்க்க முடிந்தால் எப்படி இருக்கும்?</p>
+          <p className="bridge-intro-text">
+            நீங்கள் உங்கள் பிரச்சினைகளை <strong>இயற்கையாக, எளிதாக மற்றும் பாதுகாப்பாக</strong> தீர்க்க முடிந்தால் எப்படி இருக்கும்?
+          </p>
 
           <div className="negative-contrast">
             <p>❌ மருந்து இல்லாமல்…</p>
@@ -298,49 +367,284 @@ function App() {
         <div className="slider-hint">ஒவ்வொன்றாக பார்க்க இடதுபுறம் நகர்த்தவும் ←</div>
 
         <div className="therapy-synergy animate-reveal">
-          <div className="synergy-highlight">
-            <p>விதை வைத்து மெதுவாக அழுத்தினால்: ⚡ <strong>குணப்படுத்தும் செயல்முறை</strong> துவங்கும்</p>
-          </div>
           <div className="synergy-card">
-            <h3>💥 இந்த 3 முறைகளையும் சேர்த்து பயன்படுத்தினால்?</h3>
-            <div className="synergy-grid">
-              <div className="syn-item">👉 உடல்</div>
-              <div className="syn-item">👉 மனம்</div>
-              <div className="syn-item">👉 ஆற்றல்</div>
+            <h3>இந்த 3 முறைகளையும் சேர்த்து பயன்படுத்தினால்?</h3>
+            <div className="synergy-grid-premium">
+              <div className="syn-item-premium">
+                <img src="/body_icon_premium.png" alt="Body" className="syn-icon-img" />
+                <span>உடல்</span>
+              </div>
+              <div className="syn-item-premium">
+                <img src="/mind_icon_premium.png" alt="Mind" className="syn-icon-img" />
+                <span>மனம்</span>
+              </div>
+              <div className="syn-item-premium">
+                <img src="/energy_icon_premium.png" alt="Energy" className="syn-icon-img" />
+                <span>ஆற்றல்</span>
+              </div>
             </div>
-            <p className="synergy-result">மூன்றையும் ஒரே நேரத்தில் சமநிலைப்படுத்தும் 🔥 <strong>முழுமையான ஹீலிங்</strong> முறை கிடைக்கும்</p>
+            <p className="synergy-result">மூன்றையும் ஒரே நேரத்தில் சமநிலைப்படுத்தும்<strong>முழுமையான ஹீலிங்</strong>கிடைக்கும்</p>
           </div>
         </div>
 
-        <div className="book-specialty animate-reveal">
-          <h3 className="spec-title">🌟 இந்த புத்தகத்தின் சிறப்பு:</h3>
-          <div className="spec-grid">
-            <div className="spec-item-modern">✔️ சிக்கலான கோட்பாடுகள் இல்லை</div>
-            <div className="spec-item-modern">✔️ மருத்துவ அறிவு தேவையில்லை</div>
-            <div className="spec-item-modern">✔️ யாராலும் உடனே பயன்படுத்த முடியும்</div>
-          </div>
-
-          <div className="detail-box">
-            <p className="detail-header">📌 ஒவ்வொரு பிரச்சினைக்கும்:</p>
-            <div className="detail-grid-modern">
-              <span>👉 எப்படி செய்வது</span>
-              <span>👉 எங்கே செய்வது</span>
-              <span>👉 எவ்வளவு நேரம்</span>
-              <span>👉 என்ன பலன்</span>
-            </div>
-            <p className="detail-footer">எல்லாம் தெளிவாக கொடுக்கப்பட்டுள்ளது</p>
-          </div>
-        </div>
-
-        <div className="target-audience animate-reveal">
-          <h3>👥 இந்த புத்தகம் யாருக்கு?</h3>
-          <ul className="audience-list">
-            <li>👉 தினசரி உடல் பிரச்சினைகள் உள்ளவர்களுக்கு</li>
-            <li>👉 மன அழுத்தத்தில் இருப்பவர்களுக்கு</li>
-            <li>👉 இயற்கை தீர்வு தேடுபவர்களுக்கு</li>
-            <li>👉 குடும்பத்தினருக்கு உதவ விரும்புபவர்களுக்கு</li>
-            <li>👉 ஹீலர்கள் & வெல்ல்னஸ் பிராக்டிஷனர்களுக்கு</li>
+        <div className="book-specialty-premium animate-reveal">
+          <h3 className="spec-title-modern">இந்த புத்தகத்தின் சிறப்பு:</h3>
+          <ul className="spec-list-premium">
+            <li><span className="check-badge">✓</span> சிக்கலான கோட்பாடுகள் இல்லை</li>
+            <li><span className="check-badge">✓</span> மருத்துவ அறிவு தேவையில்லை</li>
+            <li><span className="check-badge">✓</span> யாராலும் உடனே பயன்படுத்த முடியும்</li>
           </ul>
+
+          <div className="detail-box-modern">
+            <p className="detail-header-modern">📌 ஒவ்வொரு பிரச்சினைக்கும்:</p>
+            <div className="detail-grid-flex">
+              <span className="detail-tag">✔️ எப்படி செய்வது</span>
+              <span className="detail-tag">✔️ எங்கே செய்வது</span>
+              <span className="detail-tag">✔️ எவ்வளவு நேரம்</span>
+              <span className="detail-tag">✔️ என்ன பலன்</span>
+            </div>
+            <p className="detail-footer-modern">எல்லாம் தெளிவாக கொடுக்கப்பட்டுள்ளது</p>
+          </div>
+        </div>
+
+
+        <div className="target-audience-section-v2 animate-reveal">
+          <div className="section-header-modern">
+            <h2 className="section-title-premium-v2">👥 இந்த புத்தகம் யாருக்கு?</h2>
+            <p className="section-subtitle-v2">ஒவ்வொருவருக்கும் இயற்கை வழித் தீர்வு உண்டு</p>
+          </div>
+
+          <div className="audience-categories-v2">
+            {/* Category 1: Professionals & Students */}
+            <div className="audience-group-v2">
+              <div className="category-hero">
+                <img src="/category_pros_students.png" alt="Professionals & Students" />
+                <h3 className="group-title-v2">பணி மற்றும் கல்வி</h3>
+              </div>
+              <div className="audience-grid-v2">
+                <div className="audience-card-v2">
+                  <h4>வேலைப்பளு அதிகமானவர்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">தினசரி சோர்வு, தலைவலி, மன அழுத்தம்</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> உடனடி இயற்கை ரிலீஃப் தேவை — வேலை பாதிக்காமல்</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="audience-card-v2">
+                  <h4>மாணவர்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">கவனம் குறைவு, மன அழுத்தம், தூக்கமின்மை</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> concentration & memory improve செய்ய</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="audience-card-v2">
+                  <h4>Screen time அதிகமானவர்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">கண் வலி, தலைவலி, neck pain</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> instant relief techniques</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Category 2: Families & Caregivers */}
+            <div className="audience-group-v2">
+              <div className="category-hero">
+                <img src="/category_family_care.png" alt="Family & Care" />
+                <h3 className="group-title-v2">குடும்பம் மற்றும் பராமரிப்பு</h3>
+              </div>
+              <div className="audience-grid-v2">
+                <div className="audience-card-v2">
+                  <h4>வீட்டுத் தாய்மார்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">குடும்பத்தினரின் சிறிய உடல் பிரச்சினைகள்</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> வீட்டிலேயே எளிய தீர்வுகள் தர முடியும்</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="audience-card-v2">
+                  <h4>குழந்தைகள் கொண்ட பெற்றோர்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">குளிர், இருமல், ஜீரண பிரச்சினைகள்</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> safe & side-effect free care</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="audience-card-v2">
+                  <h4>மூத்த குடிமக்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">உடல் வலி, சோர்வு, circulation issues</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> பாதுகாப்பான, மென்மையான சிகிச்சை</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="audience-card-v2">
+                  <h4>குடும்ப பராமரிப்பாளர்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">அனைவருக்கும் உடனடி உதவி தேவைப்படும் சூழல்</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> First Aid போல பயன்படும்</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Category 3: Mental Wellness */}
+            <div className="audience-group-v2">
+              <div className="category-hero">
+                <img src="/mind_icon_premium.png" alt="Mental Wellness" />
+                <h3 className="group-title-v2">மனநலம் மற்றும் தூக்கம்</h3>
+              </div>
+              <div className="audience-grid-v2">
+                <div className="audience-card-v2">
+                  <h4>மன அழுத்தத்தில் இருப்பவர்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">Anxiety, overthinking, tension</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> மன அமைதி பெற இயற்கை வழி</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="audience-card-v2">
+                  <h4>தூக்கமின்மை உள்ளவர்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">இரவில் தூங்க முடியாமல் தவிப்பு</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> Natural sleep support without tablets</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="audience-card-v2">
+                  <h4>Self-Improvement ஆர்வம் உள்ளவர்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">body-mind awareness</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> self-healing skill develop செய்ய</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Category 4: Natural & Preventive */}
+            <div className="audience-group-v2">
+              <div className="category-hero">
+                <img src="/body_icon_premium.png" alt="Natural Healing" />
+                <h3 className="group-title-v2">இயற்கை மற்றும் தடுப்பு</h3>
+              </div>
+              <div className="audience-grid-v2">
+                <div className="audience-card-v2">
+                  <h4>இயற்கை மருத்துவம் விரும்புபவர்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">Chemical-free lifestyle</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> 100% natural healing methods</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="audience-card-v2">
+                  <h4>ஆரோக்கியத்தை மேம்படுத்த விரும்புபவர்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">Prevention mindset</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> immunity & energy boost</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="audience-card-v2">
+                  <h4>அடிக்கடி மாத்திரை எடுப்பவர்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">சிறிய பிரச்சினைக்கும் மருந்து</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> Drug-free alternative தேவை</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="audience-card-v2">
+                  <h4>ஹீலர்கள் & பிராக்டிஷனர்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">Clients க்கு simple solutions தேவை</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> practice expand செய்ய powerful tool</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Category 5: Energy & Emergency */}
+            <div className="audience-group-v2">
+              <div className="category-hero">
+                <img src="/energy_icon_premium.png" alt="Energy & Emergency" />
+                <h3 className="group-title-v2">ஆற்றல் மற்றும் அவசரம்</h3>
+              </div>
+              <div className="audience-grid-v2">
+                <div className="audience-card-v2">
+                  <h4>எப்போதும் சோர்வாக இருப்பவர்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">low energy, burnout feeling</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> body energy balance செய்ய</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="audience-card-v2">
+                  <h4>அடிக்கடி சிறிய பிரச்சினைகள் வரும் நபர்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">repeated cold, headache, digestion issues</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> root-level natural solution</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="audience-card-v2">
+                  <h4>அவசரநேர உதவி தேவைப்படுபவர்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">doctor உடனே கிடைக்காத சூழல்</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> self-healing first response</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="audience-card-v2">
+                  <h4>செலவை குறைக்க விரும்புபவர்கள்</h4>
+                  <div className="card-content-v2">
+                    <p className="problem-p">medical expenses அதிகம்</p>
+                    <div className="reason-p">
+                      <span className="lightbulb"></span>
+                      <p><strong>காரணம்:</strong> low-cost healing method</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="transformation-section animate-reveal">
@@ -362,7 +666,7 @@ function App() {
             <h3>💥 முக்கியமாக…</h3>
             <p>👉 நீங்கள் உங்கள் உடலை புரிந்து கொள்வீர்கள்</p>
             <p>👉 எப்போது என்ன செய்ய வேண்டும் தெரியும்</p>
-            <div className="power-tag">🔥 இதுவே — சுய குணப்படுத்தும் சக்தி</div>
+            <div className="power-tag">இதுவே — சுய குணப்படுத்தும் சக்தி</div>
             <h4 className="freedom-title">🧠 இதுவே உண்மையான சுதந்திரம்!</h4>
             <div className="freedom-points">
               <p>👉 நீங்கள் இனி அடிமை இல்லை</p>
@@ -373,13 +677,13 @@ function App() {
 
         <div className="family-benefit animate-reveal">
           <div className="family-card">
-            <h3>👨‍👩‍👧‍👦 இந்த அறிவு உங்கள் குடும்பத்திற்கும் பயன் தரும்</h3>
+            <h3>இந்த அறிவு உங்கள் குடும்பத்திற்கும் பயன் தரும்</h3>
             <div className="family-grid">
               <span>👉 குழந்தைகள்</span>
               <span>👉 பெற்றோர்</span>
               <span>👉 நண்பர்கள்</span>
             </div>
-            <p className="lifestyle-tag">🌟 இது ஒரு புத்தகம் மட்டும் அல்ல… இது ஒரு வாழ்க்கை முறை!</p>
+            <p className="lifestyle-tag">இது ஒரு புத்தகம் மட்டும் அல்ல… இது ஒரு வாழ்க்கை முறை!</p>
           </div>
         </div>
 
@@ -390,7 +694,7 @@ function App() {
             <div className="safe-badge">✅ பக்கவிளைவுகள் இல்லை</div>
             <div className="safe-badge">✅ உட்கொள்ள வேண்டியதும் இல்லை</div>
           </div>
-          <div className="non-invasive">💯 100% Non-Invasive Healing</div>
+          <div className="non-invasive">100% Non-Invasive Healing</div>
         </div>
 
         <div className="daily-balance animate-reveal">
@@ -429,7 +733,7 @@ function App() {
             <p>💡 ஏனெனில்… வாழ்க்கையை மாற்றுவது பெரிய விஷயங்கள் அல்ல… சிறிய, சரியான தீர்வுகள்தான்! 💯</p>
           </div>
         </div>
-      </main>
+      </main >
 
       <section className="why-choose-section animate-reveal">
         <h2 className="why-choose-title">🎯 ஏன் இந்த முறையைத் தேர்வு செய்ய வேண்டும்?</h2>
@@ -441,26 +745,6 @@ function App() {
         </div>
       </section>
 
-      <section className="info-section animate-reveal" style={{ animationDelay: '0.6s' }}>
-        <h2 className="section-title">சிகிச்சை முறைகள்</h2>
-        <div className="process-grid">
-          <div className="process-card">
-            <div className="process-num">01</div>
-            <h3>ஆலோசனை</h3>
-            <p>உங்கள் உடல் நிலை குறித்த விரிவான ஆலோசனை.</p>
-          </div>
-          <div className="process-card">
-            <div className="process-num">02</div>
-            <h3>சிகிச்சை</h3>
-            <p>இயற்கை முறையில் எளிய மற்றும் சிறந்த தீர்வுகள்.</p>
-          </div>
-          <div className="process-card">
-            <div className="process-num">03</div>
-            <h3>புத்துணர்வு</h3>
-            <p>முழுமையான ஆரோக்கியம் மற்றும் புது தெம்பு.</p>
-          </div>
-        </div>
-      </section>
 
       <section className="promise-section animate-reveal" style={{ animationDelay: '0.8s' }}>
         <div className="promise-card">
@@ -476,57 +760,30 @@ function App() {
         </div>
       </section>
 
-      <section className="specialties-section animate-reveal" style={{ animationDelay: '1.0s' }}>
-        <h2 className="section-title">எங்கள் சிறப்புகள்</h2>
-        <div className="specialties-grid">
-          <div className="specialty-card">
-            <span className="spec-icon">🧠</span>
-            <h3>மன அழுத்தம்</h3>
-            <p>மன அமைதி மற்றும் தெளிவான சிந்தனை.</p>
-          </div>
-          <div className="specialty-card">
-            <span className="spec-icon">😴</span>
-            <h3>தூக்கமின்மை</h3>
-            <p>ஆழ்ந்த மற்றும் நிம்மதியான உறக்கம்.</p>
-          </div>
-          <div className="specialty-card">
-            <span className="spec-icon">🍽️</span>
-            <h3>செரிமானம்</h3>
-            <p>சிறந்த செரிமான மண்டலம் மற்றும் ஆரோக்கியம்.</p>
-          </div>
-          <div className="specialty-card">
-            <span className="spec-icon">💪</span>
-            <h3>உடல் வலி</h3>
-            <p>உடல் சோர்வு மற்றும் வலிகளில் இருந்து விடுதலை.</p>
-          </div>
-          <div className="specialty-card">
-            <span className="spec-icon">✨</span>
-            <h3>சரும பராமரிப்பு</h3>
-            <p>இயற்கையான முறையில் ஜொலிக்கும் சருமம்.</p>
-          </div>
-          <div className="specialty-card">
-            <span className="spec-icon">⚖️</span>
-            <h3>உடல் எடை</h3>
-            <p>ஆரோக்கியமான முறையில் எடையைக் குறைத்தல்.</p>
-          </div>
-        </div>
-      </section>
 
       <section className="faq-section animate-reveal" style={{ animationDelay: '1.2s' }}>
         <h2 className="section-title">அடிக்கடி கேட்கப்படும் கேள்விகள்</h2>
-        <div className="faq-list">
-          <div className="faq-item">
-            <h4>கேள்வி: இது 100% இயற்கையானதா?</h4>
-            <p>பதில்: ஆம், எங்களது அனைத்து சிகிச்சைகளும் 100% இயற்கை முறைகளை அடிப்படையாகக் கொண்டவை.</p>
-          </div>
-          <div className="faq-item">
-            <h4>கேள்வி: பக்கவிளைவுகள் ஏற்படுமா?</h4>
-            <p>பதில்: இல்லை, இயற்கை முறையைப் பின்பற்றுவதால் எந்தவிதமான பக்கவிளைவுகளும் ஏற்படாது.</p>
-          </div>
-          <div className="faq-item">
-            <h4>கேள்வி: பலன் கிடைக்க எவ்வளவு காலம் ஆகும்?</h4>
-            <p>பதில்: ஒவ்வொருவரின் உடல் நிலையைப் பொறுத்து மாற்றம் தெரியும். பொதுவாக சில நாட்களிலேயே நல்ல முன்னேற்றம் கிடைக்கும்.</p>
-          </div>
+        <div className="faq-accordion-modern">
+          {faqData.map((item, index) => (
+            <div
+              key={index}
+              className={`faq-item-modern ${activeFaq === index ? 'active' : ''}`}
+              onClick={() => setActiveFaq(activeFaq === index ? null : index)}
+            >
+              <div className="faq-question-modern">
+                <span>{item.q}</span>
+                <span className="faq-icon-modern">{activeFaq === index ? '−' : '＋'}</span>
+              </div>
+              <div className="faq-answer-modern">
+                <div className="faq-answer-content">
+                  <p>{item.a}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="faq-footer-message">
+          <p>💡 உங்களிடம் மேலும் கேள்விகள் இருந்தால் தயங்காமல் கேட்கலாம். உங்கள் ஆரோக்கிய பயணத்தில் உங்களுக்கு வழிகாட்ட தயாராக உள்ளோம். 💯</p>
         </div>
       </section>
 
@@ -563,7 +820,7 @@ function App() {
           </div>
         </div>
       </footer>
-    </div>
+    </div >
   );
 }
 
