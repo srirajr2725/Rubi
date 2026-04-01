@@ -9,65 +9,73 @@
   flex-direction: column;
   position: relative;
   overflow-x: hidden;
+  padding-bottom: 80px;
+  /* Space for fixed bottom timer */
 }
 
 /* Timer */
 .modern-timer-card {
   position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%) translateY(-150%);
-  width: 90%;
-  max-width: 320px;
-  background: rgba(168, 0, 0, 0.25);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border-radius: 24px;
+  bottom: 25px;
+  /* Minimalist bottom-right placement */
+  right: 25px;
+  left: auto;
+  transform: none;
+  width: auto;
+  min-width: 160px;
+  background: rgba(43, 0, 0, 0.9);
+  /* Darker, more premium glass */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 50px;
+  /* Bubble shape */
   border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 15px;
-  z-index: 2000;
+  padding: 10px 18px;
+  z-index: 2200;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  box-shadow: var(--ruby-glow);
-  opacity: 0;
-  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  gap: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  opacity: 1;
+  transition: all 0.3s ease;
 }
 
 .modern-timer-card.visible {
-  transform: translateX(-50%) translateY(0);
   opacity: 1;
+  transform: scale(1);
 }
 
 .timer-header {
-  font-size: 0.7rem;
+  display: none;
+  /* Hide header text for bubble layout */
+}
+
+.timer-label-tamil {
+  font-size: 0.9rem;
   font-weight: 800;
-  color: var(--accent);
-  margin-bottom: 8px;
-  letter-spacing: 1px;
+  color: #FFE082;
+  font-family: var(--font-tamil);
 }
 
 .timer-content {
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 10px;
+  gap: 8px;
+  margin-bottom: 0;
 }
 
 .timer-countdown {
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   font-weight: 900;
-  color: var(--primary);
+  color: #FFF;
   font-family: 'Outfit', sans-serif;
-  text-shadow: none;
+  letter-spacing: 1px;
 }
 
 .timer-progress-track {
-  width: 100%;
-  height: 4px;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 2px;
-  overflow: hidden;
+  display: none;
+  /* Hide progress bar in bubble */
 }
 
 .timer-progress-bar {
@@ -2412,7 +2420,8 @@
 }
 
 .faq-item-modern.active .faq-answer-modern {
-  max-height: 500px; /* Adjust based on content */
+  max-height: 500px;
+  /* Adjust based on content */
 }
 
 .faq-answer-content {
@@ -2438,3 +2447,43 @@
   color: var(--text);
 }
 
+
+/* Buy Now Button Styles */
+.buy-now-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #FF5252, #FF1744);
+  color: white;
+  padding: 18px 45px;
+  border-radius: 50px;
+  font-weight: 900;
+  font-size: 1.2rem;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(255, 23, 68, 0.3);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.buy-now-btn:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 15px 35px rgba(255, 23, 68, 0.4);
+  background: linear-gradient(135deg, #FF1744, #FF5252);
+  color: white;
+}
+
+.hero-cta,
+.why-cta,
+.faq-cta {
+  margin-top: 35px;
+  text-align: center;
+}
+
+.urgent-cta {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  text-decoration: none;
+  background: white;
+  color: var(--primary);
+}
