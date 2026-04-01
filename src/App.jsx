@@ -108,87 +108,62 @@ function App() {
       <section className="hero-modern animate-reveal">
         <div className="hero-content">
           <div className="hero-badge">BEST NATURAL HEALING 2024</div>
-          <h2 className="title-large">✨ உங்கள் வாழ்க்கையை பாதிப்பது <br /> <span className="highlight">சிறிய பிரச்சினைகள்தான்!</span></h2>
-          <p className="description">பெரிய நோய்கள் அல்ல... தினமும் உங்களை மெதுவாக சோர்வடையச் செய்யும் சிறிய விஷயங்களே உங்கள் வாழ்வின் தரத்தைக் குறைக்கின்றன.</p>
+          <h2 className="title-large">20 அன்றாட வாழ்க்கை சிக்கல்கள் <br /> <span className="highlight">100 இயற்கை தீர்வுகள்</span></h2>
+          <p className="description">பாரம்பரிய முறைகளை நவீன வடிவில் அனுபவியுங்கள்.</p>
         </div>
       </section>
 
-      <section className="pain-points-section animate-reveal">
-        <h2 className="section-title">நீங்கள் கவனித்திருக்கிறீர்களா?</h2>
-        <div className="pain-points-grid">
-          {[
-            { icon: '💆‍♂️', text: 'தலைவலி' },
-            { icon: '😫', text: 'சோர்வு' },
-            { icon: '🧠', text: 'மன அழுத்தம்' },
-            { icon: '🤢', text: 'செரிமான கோளாறு' },
-            { icon: '😴', text: 'தூக்கமின்மை' },
-            { icon: '🦴', text: 'உடல் வலி' },
-            { icon: '🤧', text: 'குளிர், இருமல்' },
-            { icon: '🔥', text: 'உடல் சூடு' },
-            { icon: '😟', text: 'கவலை' }
-          ].map((item, index) => (
-            <div key={index} className="pain-point-card">
-              <span className="pain-icon">{item.icon}</span>
-              <span className="pain-text">{item.text}</span>
-            </div>
-          ))}
+      <section className="trust-badges animate-reveal" style={{ animationDelay: '0.2s' }}>
+        <div className="badge-item">
+          <span className="badge-icon">🌿</span>
+          <span>100% இயற்கை</span>
         </div>
-        <div className="pain-warning">
-          <p>⚠️ இவையே உங்கள் நாள் முழுவதையும் பாதிக்கும் மிகப்பெரிய காரணங்கள்.</p>
+        <div className="badge-item">
+          <span className="badge-icon">✅</span>
+          <span>உறுதிப்படுத்தப்பட்டது</span>
+        </div>
+        <div className="badge-item">
+          <span className="badge-icon">🏠</span>
+          <span>வீட்டுத் தீர்வுகள்</span>
         </div>
       </section>
 
-      <section className="remote-control-section animate-reveal">
-        <div className="remote-card">
-          <div className="remote-icon">📱</div>
-          <h2>உங்கள் உடலுக்கான ரிமோட்</h2>
-          <p>TV, Fan, AC எல்லாவற்றுக்கும் ரிமோட் உள்ளது. உங்கள் உடலுக்கும் உண்டு!</p>
-          <div className="remote-highlight">
-            ✨ உங்கள் உள்ளங்கைகள் & பாதங்கள்
-          </div>
-          <p>இவற்றில் உங்கள் உடலின் அனைத்து உறுப்புகளையும் கட்டுப்படுத்தும் 🔑 <strong>“ரிமோட் பாயிண்ட்ஸ்”</strong> உள்ளன. இதுவே Sujok மருத்துவத்தின் அடிப்படை.</p>
-        </div>
-      </section>
-
-      <main className="therapy-section animate-reveal">
-        <div className="section-header">
-          <h2 className="section-title">3 சக்திவாய்ந்த முறைகள்</h2>
-        </div>
+      <main className="therapy-section animate-reveal" style={{ animationDelay: '0.4s' }}>
         <div className="slider-container">
           <div className="therapy-slider ultra-modern" ref={sliderRef}>
             <div className="glass-card">
               <div className="glass-image">
-                <img src="/assets/color-therapy.png" alt="Color Therapy" />
+                <img src="/assets/color-therapy.png" alt="வண்ண சிகிச்சை" />
                 <div className="image-overlay"></div>
               </div>
               <div className="glass-content">
-                <h3>Color Therapy (நிற சிகிச்சை)</h3>
-                <span className="glass-label">மனதை அமைதிப்படுத்த</span>
-                <p>ஒவ்வொரு நிறமும் ஒரு அதிர்வு. உடல் சூட்டை குறைக்கவும், சக்தியை அதிகரிக்கவும் உதவுகிறது.</p>
+                <h3>வண்ண சிகிச்சை</h3>
+                <span className="glass-label">COLOR THERAPY</span>
+                <p>வண்ணங்களின் ஆற்றல் மூலம் மனதை அமைதிப்படுத்துங்கள்.</p>
               </div>
             </div>
 
             <div className="glass-card">
               <div className="glass-image">
-                <img src="/assets/number-therapy.png" alt="Number Therapy" />
+                <img src="/assets/number-therapy.png" alt="எண் சிகிச்சை" />
                 <div className="image-overlay"></div>
               </div>
               <div className="glass-content">
-                <h3>Number Therapy (எண் சிகிச்சை)</h3>
-                <span className="glass-label">ஆற்றல் மாற்றம்</span>
-                <p>எண்கள் வெறும் கணக்கு அல்ல, ஒரு ஆற்றல். சரியான எண் - சரியான மாற்றம் தரும்.</p>
+                <h3>எண் சிகிச்சை</h3>
+                <span className="glass-label">NUMBER THERAPY</span>
+                <p>எண்களின் அதிர்வுகள் மூலம் ஆரோக்கியத்தை மேம்படுத்துங்கள்.</p>
               </div>
             </div>
 
             <div className="glass-card">
               <div className="glass-image">
-                <img src="/assets/seed-therapy.png" alt="Seed Therapy" />
+                <img src="/assets/seed-therapy.png" alt="விதை சிகிச்சை" />
                 <div className="image-overlay"></div>
               </div>
               <div className="glass-content">
-                <h3>Seed Therapy (விதை சிகிச்சை)</h3>
-                <span className="glass-label">இயற்கை அழுத்தம்</span>
-                <p>கைகள் & கால்களில் உள்ள புள்ளிகளில் விதை வைத்து அழுத்தினால் குணப்படுத்தும் செயல்முறை துவங்கும்.</p>
+                <h3>விதை சிகிச்சை</h3>
+                <span className="glass-label">SEED THERAPY</span>
+                <p>இயற்கை விதைகளின் மருத்துவ குணங்களை உணருங்கள்.</p>
               </div>
             </div>
           </div>
@@ -202,18 +177,38 @@ function App() {
         <div className="slider-hint">ஒவ்வொன்றாக பார்க்க இடதுபுறம் நகர்த்தவும் ←</div>
       </main>
 
-      <section className="book-promo-section animate-reveal">
-        <div className="book-card">
-          <div className="book-badge">புதிய வெளியீடு</div>
-          <h2 className="book-title">20 தினசரி வாழ்க்கை பிரச்சினைகள் – 100 இயற்கை குணப்படுத்தும் தீர்வுகள்</h2>
-          <p className="book-subtitle">இது ஒரு சாதாரண புத்தகம் அல்ல, உங்கள் தினசரி வாழ்க்கைக்கான சக்திவாய்ந்த ஹீலிங் கையேடு.</p>
-          <div className="book-features">
-            <div className="feature">✅ மருந்துகள் இல்லை</div>
-            <div className="feature">✅ பக்கவிளைவுகள் இல்லை</div>
-            <div className="feature">✅ 100% பாதுகாப்பானது</div>
+      <section className="info-section animate-reveal" style={{ animationDelay: '0.6s' }}>
+        <h2 className="section-title">சிகிச்சை முறைகள்</h2>
+        <div className="process-grid">
+          <div className="process-card">
+            <div className="process-num">01</div>
+            <h3>ஆலோசனை</h3>
+            <p>உங்கள் உடல் நிலை குறித்த விரிவான ஆலோசனை.</p>
           </div>
-          <button className="cta-btn primary-btn pulse-glow">இப்போதே ஆர்டர் செய்யுங்கள்</button>
-          <p className="seed-note">⚠️ குறிப்பு: விதைகள் 8–12 மணி நேரம் மட்டும் வைத்திருக்கவும். மீண்டும் பயன்படுத்த வேண்டாம்.</p>
+          <div className="process-card">
+            <div className="process-num">02</div>
+            <h3>சிகிச்சை</h3>
+            <p>இயற்கை முறையில் எளிய மற்றும் சிறந்த தீர்வுகள்.</p>
+          </div>
+          <div className="process-card">
+            <div className="process-num">03</div>
+            <h3>புத்துணர்வு</h3>
+            <p>முழுமையான ஆரோக்கியம் மற்றும் புது தெம்பு.</p>
+          </div>
+        </div>
+      </section>
+
+      <section className="promise-section animate-reveal" style={{ animationDelay: '0.8s' }}>
+        <div className="promise-card">
+          <h2>எங்கள் உறுதிமொழி</h2>
+          <div className="promise-list">
+            <div className="promise-item">✅ 100% இயற்கை முறைகள்</div>
+            <div className="promise-item">✅ பக்கவிளைவுகள் அற்றது</div>
+            <div className="promise-item">✅ நிரந்தர தீர்வுகள்</div>
+          </div>
+          <button className="add-more-btn">
+            <span>ஆலோசனையைத் தொடங்க ＋</span>
+          </button>
         </div>
       </section>
 
