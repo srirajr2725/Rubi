@@ -336,6 +336,71 @@
     border-radius: 10px;
 }
 
+.verification-card {
+    border: 2px solid var(--primary);
+    padding: 30px;
+}
+
+.verification-header h2 {
+    font-size: 1.6rem;
+    font-weight: 900;
+    color: var(--primary);
+    margin-bottom: 8px;
+    font-family: var(--font-tamil);
+}
+
+.verification-header p {
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 25px;
+    font-family: var(--font-tamil);
+}
+
+.utr-instructions {
+    background: #FFF9C4;
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 25px;
+    border-left: 5px solid #FBC02D;
+}
+
+.utr-instructions h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: #827717;
+    font-family: var(--font-tamil);
+}
+
+.utr-instructions p {
+    font-size: 0.9rem;
+    color: #333;
+    line-height: 1.5;
+    font-family: var(--font-tamil);
+}
+
+.utr-wrapper {
+    border: 2px solid #EEE;
+    background: #F5F5F5;
+}
+
+.utr-wrapper:focus-within {
+    border-color: var(--primary);
+}
+
+.back-to-payment {
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #666;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-decoration: underline;
+    font-family: var(--font-tamil);
+}
+
 /* Responsive */
 @media (max-width: 968px) {
     .booking-grid {
