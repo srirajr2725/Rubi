@@ -127,7 +127,7 @@
 
 /* Hero */
 .hero-modern {
-  padding: 40px 20px;
+  padding: 20px 20px;
   text-align: center;
 }
 
@@ -167,7 +167,7 @@
 
 /* Therapy Section */
 .therapy-section {
-  padding: 40px 0;
+  padding: 20px 0;
 }
 
 .ultra-modern {
@@ -279,7 +279,7 @@
 /* Footer */
 .luxury-footer {
   padding: 0;
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 .footer-glass {
@@ -402,7 +402,7 @@
 
 /* Specialties Section */
 .specialties-section {
-  padding: 40px 20px;
+  padding: 20px 20px;
   text-align: center;
 }
 
@@ -443,7 +443,7 @@
 
 /* FAQ Section */
 .faq-section {
-  padding: 40px 20px;
+  padding: 20px 20px;
   background: var(--bg-secondary);
 }
 
@@ -500,7 +500,7 @@
 
 /* Pain Points Section */
 .pain-points-section {
-  padding: 40px 20px;
+  padding: 20px 20px;
   background: linear-gradient(180deg, var(--bg) 0%, var(--bg-secondary) 100%);
 }
 
@@ -589,7 +589,7 @@
 
 /* Remote Control Section */
 .remote-control-section {
-  padding: 40px 20px;
+  padding: 20px 20px;
 }
 
 .remote-card {
@@ -628,7 +628,7 @@
 
 /* Book Promo Section */
 .book-promo-section {
-  padding: 40px 20px;
+  padding: 20px 20px;
 }
 
 .book-card {
@@ -808,7 +808,7 @@
 
 /* Info and Process Sections */
 .info-section {
-  padding: 40px 20px;
+  padding: 20px 20px;
 }
 
 .process-grid {
@@ -994,7 +994,7 @@
 
 /* Methods Section Styling */
 .methods-section {
-  padding: 40px 20px;
+  padding: 20px 20px;
   background: white;
 }
 
@@ -1092,7 +1092,7 @@
 
 /* Solution Bridge Section */
 .solution-bridge-section {
-  padding: 40px 20px;
+  padding: 20px 20px;
   background: white;
 }
 
@@ -1236,7 +1236,7 @@
 /* Marketing Narrative Sections */
 
 .therapy-synergy {
-  margin: 40px 0;
+  margin: 20px 0;
   text-align: center;
 }
 
@@ -1290,9 +1290,9 @@
 
 /* Book Specialty */
 .book-specialty {
-  margin: 50px 0;
+  margin: 25px 0;
   background: #F8FAFC;
-  padding: 35px 20px;
+  padding: 20px 20px;
   border-radius: 32px;
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -1356,7 +1356,7 @@
 
 /* Target Audience */
 .target-audience {
-  margin: 50px 0;
+  margin: 20px 0;
   text-align: left;
   padding: 0 10px;
 }
@@ -1386,7 +1386,7 @@
 
 /* Transformation Section */
 .transformation-section {
-  margin: 50px 0;
+  margin: 20px 0;
 }
 
 .trans-card {
@@ -1424,7 +1424,7 @@
 
 /* Power Manual */
 .power-manual {
-  margin: 50px 0;
+  margin: 20px 0;
 }
 
 .manual-card {
@@ -1470,7 +1470,7 @@
 
 /* Family Benefit */
 .family-benefit {
-  margin: 50px 0;
+  margin: 20px 0;
 }
 
 .family-card {
@@ -1512,7 +1512,7 @@
 
 /* Safety Summary */
 .safety-summary {
-  margin: 60px 0;
+  margin: 25px 0;
   padding: 0 20px;
   text-align: center;
 }
@@ -1560,7 +1560,7 @@
 
 /* Daily Balance */
 .daily-balance {
-  margin: 50px 0;
+  margin: 20px 0;
 }
 
 .balance-card {
@@ -1613,7 +1613,7 @@
 }
 
 .action-final {
-  margin: 40px 0;
+  margin: 20px 0;
   text-align: center;
 }
 
@@ -1641,7 +1641,7 @@
 }
 
 .closing-thought {
-  margin-top: 40px;
+  margin-top: 20px;
   padding: 25px;
   background: #F8FAFC;
   border-radius: 24px;
@@ -1670,7 +1670,7 @@
 
 /* Why Choose Section Styling */
 .why-choose-section {
-  padding: 40px 20px;
+  padding: 20px 20px;
   background: white;
   text-align: center;
 }
@@ -1701,7 +1701,7 @@
 
 /* Final Note and Closing Hook Styling */
 .final-note-section {
-  padding: 40px 20px;
+  padding: 20px 20px;
   background: white;
   text-align: center;
 }
@@ -1729,7 +1729,7 @@
 }
 
 .closing-hook-footer {
-  margin: 40px 0;
+  margin: 20px 0;
   padding: 30px;
   background: var(--bg-secondary);
   border-radius: 28px;
@@ -1766,7 +1766,7 @@
     justify-content: space-between;
     gap: 40px;
     text-align: left;
-    padding: 80px 40px;
+    padding: 40px 40px;
   }
 
   .hero-content {
@@ -1844,7 +1844,7 @@
   .luxury-footer .footer-glass {
     flex-direction: row;
     justify-content: space-between;
-    padding: 60px 40px;
+    padding: 30px 40px;
     align-items: flex-start;
   }
 
@@ -1863,7 +1863,7 @@
 
   /* Overall Spacing */
   section {
-    padding: 80px 0;
+    padding: 40px 0;
   }
 
   .section-title {
@@ -1883,10 +1883,10 @@
 
 /* Target Audience Section Premium */
 .target-audience-section {
-  padding: 60px 20px;
+  padding: 30px 20px;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, rgba(176, 0, 0, 0.02) 100%);
   border-radius: 40px;
-  margin: 40px 20px;
+  margin: 20px 20px;
   border: 1px solid var(--glass-border);
 }
 
@@ -2107,10 +2107,10 @@
 
 /* Book Specialty Premium Styles */
 .book-specialty-premium {
-  padding: 50px 25px;
+  padding: 25px 25px;
   background: white;
   border-radius: 40px;
-  margin: 40px 20px;
+  margin: 20px 20px;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
   border: 1px solid var(--glass-border);
   text-align: center;
@@ -2220,7 +2220,7 @@
 
 /* Detailed Target Audience Section-v2 */
 .target-audience-section-v2 {
-  padding: 60px 20px;
+  padding: 30px 20px;
   background: var(--bg-primary);
 }
 

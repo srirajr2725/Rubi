@@ -116,9 +116,6 @@ function Landing() {
                     <div className="hero-badge">BEST NATURAL HEALING 2026</div>
                     <h2 className="title-large">20 அன்றாட வாழ்க்கை சிக்கல்கள் <br /> <span className="highlight">100 இயற்கை தீர்வுகள்</span></h2>
                     <p className="description">பாரம்பரிய முறைகளை நவீன வடிவில் அனுபவியுங்கள்.</p>
-                    <div className="hero-cta">
-                        <Link to="/booking" className="buy-now-btn">Buy Now</Link>
-                    </div>
                 </div>
                 <div className="hero-hook-container animate-reveal" style={{ animationDelay: '0.4s' }}>
                     <div className="hero-hook-card">
@@ -209,6 +206,9 @@ function Landing() {
                         <p className="remote-final">நீங்களே உங்கள் ஆரோக்கியத்தை கையாள முடியும்!</p>
                     </div>
                 </div>
+                 <div className="hero-cta">
+                        <Link to="/booking" className="buy-now-btn">Buy Now</Link>
+                    </div>
             </section>
 
             <section className="solution-bridge-section animate-reveal">
