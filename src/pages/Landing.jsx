@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import '../App.css';
+import drimage from '../assets/dr.png';
 
 function Landing() {
     const [activeFaq, setActiveFaq] = useState(null);
@@ -206,9 +207,9 @@ function Landing() {
                         <p className="remote-final">நீங்களே உங்கள் ஆரோக்கியத்தை கையாள முடியும்!</p>
                     </div>
                 </div>
-                 <div className="hero-cta">
-                        <Link to="/booking" className="buy-now-btn">Buy Now</Link>
-                    </div>
+                <div className="hero-cta">
+                    <Link to="/booking" className="buy-now-btn">Buy Now</Link>
+                </div>
             </section>
 
             <section className="solution-bridge-section animate-reveal">
@@ -301,7 +302,9 @@ function Landing() {
                         ))}
                     </div>
                 </div>
-                <div className="slider-hint">ஒவ்வொன்றாக பார்க்க இடதுபுறம் நகர்த்தவும் ←</div>
+                <div className="hero-cta">
+                    <Link to="/booking" className="buy-now-btn">Buy Now</Link>
+                </div>
 
                 <div className="therapy-synergy animate-reveal">
                     <div className="synergy-card">
@@ -344,7 +347,9 @@ function Landing() {
                     </div>
                 </div>
 
-
+                <div className="hero-cta">
+                    <Link to="/booking" className="buy-now-btn">Buy Now</Link>
+                </div>
                 <div className="target-audience-section-v2 animate-reveal">
                     <div className="section-header-modern">
                         <h2 className="section-title-premium-v2">👥 இந்த புத்தகம் யாருக்கு?</h2>
@@ -583,7 +588,9 @@ function Landing() {
                         </div>
                     </div>
                 </div>
-
+                <div className="hero-cta">
+                    <Link to="/booking" className="buy-now-btn">Buy Now</Link>
+                </div>
                 <div className="transformation-section animate-reveal">
                     <div className="trans-card">
                         <h3>✨ இந்த புத்தகம் உங்கள் வாழ்க்கையை மாற்றும்</h3>
@@ -603,7 +610,7 @@ function Landing() {
                         <h3>💥 முக்கியமாக…</h3>
                         <p>👉 நீங்கள் உங்கள் உடலை புரிந்து கொள்வீர்கள்</p>
                         <p>👉 எப்போது என்ன செய்ய வேண்டும் தெரியும்</p>
-                        <div className="power-tag">இதுவே — சுய குணப்படுத்தும் சக்தி</div>
+                        <div className="power-tag"><Link to="/booking">இதுவே — சுய குணப்படுத்தும் சக்தி</Link></div>
                         <h4 className="freedom-title">🧠 இதுவே உண்மையான சுதந்திரம்!</h4>
                         <div className="freedom-points">
                             <p>👉 நீங்கள் இனி அடிமை இல்லை</p>
@@ -656,7 +663,7 @@ function Landing() {
                         <p>👉 ஒவ்வொரு பிரச்சினைக்கும் உடனடி தீர்வு</p>
                         <p>👉 உங்கள் கையில் ஒரு ஹீலிங் சக்தி</p>
                         <p>👉 வாழ்க்கையில் முழு கட்டுப்பாடு</p>
-                        <div className="imagine-reveal">💥 அதுதான் இந்த புத்தகம் தருகிறது!</div>
+                        <div className="imagine-reveal"><Link to="/booking">அதுதான் இந்த புத்தகம் தருகிறது!</Link></div>
                     </div>
 
                     <div className="action-final">
@@ -686,19 +693,6 @@ function Landing() {
             </section>
 
 
-            <section className="promise-section animate-reveal" style={{ animationDelay: '0.8s' }}>
-                <div className="promise-card">
-                    <h2>எங்கள் உறுதிமொழி</h2>
-                    <div className="promise-list">
-                        <div className="promise-item">✅ 100% இயற்கை முறைகள்</div>
-                        <div className="promise-item">✅ பக்கவிளைவுகள் அற்றது</div>
-                        <div className="promise-item">✅ நிரந்தர தீர்வுகள்</div>
-                    </div>
-                    <Link to="/booking" className="add-more-btn">
-                        <span>ஆலோசனையைத் தொடங்க ＋</span>
-                    </Link>
-                </div>
-            </section>
 
 
             <section className="faq-section animate-reveal" style={{ animationDelay: '1.2s' }}>
@@ -731,10 +725,13 @@ function Landing() {
             </section>
 
             <section className="final-note-section animate-reveal">
-                <div className="note-card-footer">
-                    <h3>⚠️ குறிப்பு:</h3>
-                    <p>👉 விதைகள் 8–12 மணி நேரம் மட்டும் வைத்திருக்கவும்</p>
-                    <p>👉 மீண்டும் அதே விதையை பயன்படுத்த வேண்டாம்</p>
+                <div className="promise-card">
+                    <h2>எங்கள் உறுதிமொழி</h2>
+                    <div className="promise-list">
+                        <div className="promise-item">✅ 100% இயற்கை முறைகள்</div>
+                        <div className="promise-item">✅ பக்கவிளைவுகள் அற்றது</div>
+                        <div className="promise-item">✅ நிரந்தர தீர்வுகள்</div>
+                    </div>
                 </div>
 
                 <div className="closing-hook-footer">
@@ -744,21 +741,55 @@ function Landing() {
                 </div>
             </section>
 
-            <footer className="footer-modern">
-                <div className="footer-glass">
-                    <div className="footer-top">
-                        <img src="/assets/ruby-logo.png" alt="Ruby Logo" />
-                        <div className="footer-brand">
-                            <h3>RUBY WELLNESS</h3>
-                            <p>Natural Healing Solutions</p>
+            <footer className="mega-footer animate-reveal">
+                <div className="mega-footer-content">
+                    <div className="footer-top-brand">
+                        <img src="/assets/ruby-logo.png" alt="Ruby Logo" style={{ width: '80px', marginBottom: '20px' }} />
+                        <div className="brand-text">
+                            <h3 style={{ fontSize: '1.5rem', fontWeight: 900, letterSpacing: '2px' }}>RUBY WELLNESS CENTER</h3>
+                            <p style={{ opacity: 0.8, fontSize: '0.9rem' }}>ART OF HEALTHY LIVING</p>
                         </div>
                     </div>
-                    <div className="doctor-info">
-                        <span className="prefix">தலைமை மருத்துவர்</span>
-                        <h2 className="doctor-name">டாக்டர் எஸ். ராஜ்குமார்</h2>
-                        <div className="signature-line"></div>
+
+                    <div className="footer-main-grid">
+                        <div className="footer-visual-side">
+                            <img src={drimage} alt="Dr. S. Raajkumar" className="footer-doctor-img" />
+                            <div className="doctor-footer-details">
+                                <h4 className="footer-dr-name">Dr. S. Raajkumar</h4>
+                                <p className="footer-dr-title">Sujok Six-Qi Expert, Reiki Practitioner</p>
+                            </div>
+                            <div className="footer-philosophy">
+                                <p className="philosophy-text">“ஒவ்வொருவரும் தங்களுக்கே டாக்டராக மாற வேண்டும்”</p>
+                                <p style={{ fontSize: '0.8rem', marginTop: '10px', opacity: 0.8 }}>— டாக்டர் ராஜ்குமார் அவர்களின் நோக்கம்</p>
+                            </div>
+                        </div>
+
+                        <div className="footer-info-side">
+                            <div className="footer-bio">
+                                <h2>டாக்டர் எஸ். ராஜ்குமார்</h2>
+                                <p className="bio-p">Dr. S. ராஜ்குமார் இயற்கை சிகிச்சை முறைகள் மூலம் மனிதர்களின் வாழ்க்கையை மாற்றும் நோக்கத்துடன் செயல்படும் ஒரு அனுபவமிக்க ஹீலர் மற்றும் பயிற்சியாளர்.</p>
+                                <p className="bio-p">சுலபமாக கற்றுக்கொள்ளக்கூடிய மற்றும் உடனடி பயன் தரக்கூடிய சிகிச்சை முறைகளை ஒருங்கிணைத்து, அனைவரும் தங்களையும் மற்றவர்களையும் குணப்படுத்தக்கூடிய திறனை பெற வேண்டும் என்பதே இவரின் முக்கிய குறிக்கோள்.</p>
+                            </div>
+
+                            <div className="footer-courses-section">
+                                <h4 className="footer-courses-title">வழங்கப்படும் பயிற்சிகள்:</h4>
+                                <div className="footer-courses-grid">
+                                    <div className="course-item">✔️ சுஜோக் அடிப்படை & மேம்பட்ட</div>
+                                    <div className="course-item">✔️ Color Therapy</div>
+                                    <div className="course-item">✔️ Number Therapy</div>
+                                    <div className="course-item">✔️ Seed Therapy - Sujok</div>
+                                    <div className="course-item">✔️ Tongue Diagnosis</div>
+                                    <div className="course-item">✔️ Auricular Therapy</div>
+                                    <div className="course-item">✔️ Six-Qi (Beginner & Adv)</div>
+                                    <div className="course-item">✔️ Reiki Healing & Master Class</div>
+                                    <div className="course-item">✔️ Bach Flower Therapy</div>
+                                    <div className="course-item">✔️ Secrets of Sigils</div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className="footer-bottom">
+
+                    <div className="footer-copyright">
                         <p>&copy; 2024 Ruby Wellness. All Rights Reserved.</p>
                     </div>
                 </div>

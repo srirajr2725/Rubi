@@ -1457,6 +1457,11 @@
   margin: 20px 0;
 }
 
+.power-tag a {
+  color: white;
+  text-decoration: none;
+}
+
 .freedom-title {
   font-size: 1.2rem;
   font-weight: 900;
@@ -1612,6 +1617,11 @@
   text-align: center;
 }
 
+.imagine-reveal a {
+  color: white;
+  text-decoration: none;
+}
+
 .action-final {
   margin: 20px 0;
   text-align: center;
@@ -1746,6 +1756,7 @@
 .closing-hook-footer p {
   font-size: 1rem;
   font-weight: 800;
+  text-align: left;
   color: var(--text);
   margin-bottom: 12px;
 }
@@ -2142,6 +2153,7 @@
   color: var(--text);
   display: flex;
   align-items: center;
+  text-align: left;
   gap: 15px;
   background: rgba(176, 0, 0, 0.03);
   padding: 15px 25px;
@@ -2486,4 +2498,174 @@
   text-decoration: none;
   background: white;
   color: var(--primary);
+}
+
+/* Mega Footer Styling */
+.mega-footer {
+  background: var(--primary);
+  color: white;
+  padding: 60px 40px 40px;
+  border-radius: 60px 60px 0 0;
+  margin-top: 60px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mega-footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 60px;
+  margin-top: 40px;
+}
+
+.footer-visual-side {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-doctor-img {
+  width: 100%;
+  max-width: 320px;
+  border-radius: 30px;
+  border: 4px solid rgb(250, 244, 244);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+}
+
+.footer-doctor-img:hover {
+  transform: scale(1.02);
+}
+
+.footer-philosophy {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 20px;
+  border-left: 4px solid var(--accent);
+  backdrop-filter: blur(5px);
+}
+
+.doctor-footer-details {
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.footer-dr-name {
+  font-size: 1.4rem;
+  font-weight: 900;
+  color: #fff;
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+.footer-dr-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 5px 0 0 0;
+}
+
+.philosophy-text {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin: 0;
+  font-family: var(--font-tamil);
+  color: #fff;
+}
+
+.footer-info-side {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.footer-bio h2 {
+  font-size: 2.4rem;
+  font-weight: 900;
+  margin-bottom: 15px;
+  font-family: var(--font-tamil);
+  background: linear-gradient(135deg, white, #ffcdd2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bio-p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: var(--font-tamil);
+  margin-bottom: 15px;
+}
+
+.footer-courses-title {
+  font-size: 1.4rem;
+  font-weight: 900;
+  margin-bottom: 20px;
+  border-bottom: 2px solid var(--accent);
+  display: inline-block;
+  padding-bottom: 5px;
+  font-family: var(--font-tamil);
+}
+
+.footer-courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+}
+
+.course-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  font-family: var(--font-tamil);
+}
+
+.course-item:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateX(10px);
+}
+
+.footer-copyright {
+  margin-top: 60px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+@media (max-width: 900px) {
+  .footer-main-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .footer-visual-side {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .mega-footer {
+    padding: 40px 20px 30px;
+  }
+  
+  .footer-bio h2 {
+    font-size: 1.8rem;
+  }
 }
