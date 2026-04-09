@@ -131,6 +131,29 @@
   text-align: center;
 }
 
+.hero-visual-top {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 30px;
+  display: flex;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.hero-main-img {
+  width: 100%;
+  height: auto;
+  border-radius: 40px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(176, 0, 0, 0.08);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hero-main-img:hover {
+  transform: translateY(-5px) scale(1.01);
+  box-shadow: 0 35px 70px rgba(176, 0, 0, 0.15);
+}
+
 .hero-badge {
   display: inline-block;
   background: rgba(212, 175, 55, 0.1);
@@ -1582,12 +1605,23 @@
   padding-bottom: 40px;
 }
 
-.thinking-card,
+
 .imagine-card {
   background: white;
-  padding: 30px 20px;
-  border-radius: 28px;
-  margin-bottom: 25px;
+  padding: 15px 15px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  margin-top: 19px;
+  text-align: left;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+}
+
+.thinking-card {
+  background: white;
+  padding: 15px 15px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  margin-top: -40px;
   text-align: left;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
 }
@@ -2571,6 +2605,16 @@
   margin: 5px 0 0 0;
 }
 
+.footer-dr-contact {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-top: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+
 .philosophy-text {
   font-size: 1.1rem;
   font-weight: 800;
@@ -2608,10 +2652,11 @@
   font-size: 1.4rem;
   font-weight: 900;
   margin-bottom: 20px;
-  border-bottom: 2px solid var(--accent);
+  border-bottom: 2px solid var(--accent-gold);
   display: inline-block;
   padding-bottom: 5px;
   font-family: var(--font-tamil);
+  color: #fff;
 }
 
 .footer-courses-grid {
@@ -2624,19 +2669,22 @@
   display: flex;
   align-items: center;
   gap: 12px;
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 253, 0.826);
   padding: 12px 18px;
   border-radius: 12px;
   font-size: 0.95rem;
   font-weight: 700;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.3);
   transition: all 0.3s ease;
   font-family: var(--font-tamil);
+  color: #0f0f0f;
 }
 
 .course-item:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(212, 175, 55, 0.1);
+  border-color: var(--accent-gold);
   transform: translateX(10px);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.1);
 }
 
 .footer-copyright {
@@ -2648,12 +2696,64 @@
   opacity: 0.7;
 }
 
+.footer-special-offer {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+  padding: 20px;
+  border-radius: 20px;
+  margin-top: 35px;
+  border: 2px solid white;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
+  animation: pulse-border-white 2s infinite;
+}
+
+.offer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.offer-gift {
+  font-size: 2rem;
+}
+
+.offer-text h3 {
+  font-size: 1.1rem;
+  color: white;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.offer-text p {
+  font-size: 1rem;
+  font-family: var(--font-tamil);
+  margin: 0;
+  line-height: 1.4;
+  color: #fff;
+}
+
+@keyframes pulse-border-white {
+  0% {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+
+  50% {
+    border-color: rgba(255, 255, 255, 1);
+  }
+
+  100% {
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
 @media (max-width: 900px) {
   .footer-main-grid {
     grid-template-columns: 1fr;
     gap: 40px;
   }
-  
+
   .footer-visual-side {
     align-items: center;
     text-align: center;
@@ -2664,8 +2764,151 @@
   .mega-footer {
     padding: 40px 20px 30px;
   }
-  
+
   .footer-bio h2 {
     font-size: 1.8rem;
+  }
+}
+
+/* Success Page Styling */
+.success-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.success-container {
+  width: 100%;
+  max-width: 600px;
+}
+
+.success-card {
+  background: white;
+  border-radius: 40px;
+  padding: 50px 40px;
+  text-align: center;
+  box-shadow: 0 40px 100px rgba(0, 0, 0, 0.1);
+}
+
+.success-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  background: #27AE60;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 30px;
+  color: white;
+  font-size: 2.5rem;
+}
+
+.success-title {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--text);
+  margin-bottom: 15px;
+}
+
+.success-subtitle {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+.download-section {
+  text-align: left;
+  margin-bottom: 40px;
+}
+
+.download-section h3 {
+  font-family: var(--font-tamil);
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.download-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 15px;
+}
+
+.download-btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: #F8F9FA;
+  padding: 15px 20px;
+  border-radius: 16px;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.download-btn:hover {
+  background: white;
+  border-color: #27AE60;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.btn-icon {
+  font-size: 1.5rem;
+}
+
+.btn-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-name {
+  font-weight: 700;
+  color: #333;
+}
+
+.file-info {
+  font-size: 0.8rem;
+  color: #888;
+}
+
+.email-conf-message {
+  padding: 20px;
+  background: #E8F5E9;
+  border-radius: 20px;
+  color: #2E7D32;
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+}
+
+.support-text {
+  margin-top: 10px;
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.home-link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 700;
+  font-family: var(--font-tamil);
+}
+
+/* Loading State */
+.confirm-booking-btn-modern.loading {
+  background: #444;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .success-card {
+    padding: 40px 20px;
+  }
+  
+  .success-title {
+    font-size: 2rem;
   }
 }

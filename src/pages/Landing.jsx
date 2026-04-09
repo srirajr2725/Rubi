@@ -113,6 +113,9 @@ function Landing() {
             </header>
 
             <section className="hero-modern animate-reveal">
+                <div className="hero-visual-top">
+                    <img src="/home.png" alt="Ruby Wellness Home" className="hero-main-img" />
+                </div>
                 <div className="hero-content">
                     <div className="hero-badge">BEST NATURAL HEALING 2026</div>
                     <h2 className="title-large">20 அன்றாட வாழ்க்கை சிக்கல்கள் <br /> <span className="highlight">100 இயற்கை தீர்வுகள்</span></h2>
@@ -750,13 +753,14 @@ function Landing() {
                             <p style={{ opacity: 0.8, fontSize: '0.9rem' }}>ART OF HEALTHY LIVING</p>
                         </div>
                     </div>
-
+                    
                     <div className="footer-main-grid">
                         <div className="footer-visual-side">
                             <img src={drimage} alt="Dr. S. Raajkumar" className="footer-doctor-img" />
                             <div className="doctor-footer-details">
                                 <h4 className="footer-dr-name">Dr. S. Raajkumar</h4>
                                 <p className="footer-dr-title">Sujok Six-Qi Expert, Reiki Practitioner</p>
+                                <p className="footer-dr-contact">📞 <strong>9751378749</strong></p>
                             </div>
                             <div className="footer-philosophy">
                                 <p className="philosophy-text">“ஒவ்வொருவரும் தங்களுக்கே டாக்டராக மாற வேண்டும்”</p>
@@ -785,6 +789,16 @@ function Landing() {
                                     <div className="course-item">✔️ Bach Flower Therapy</div>
                                     <div className="course-item">✔️ Secrets of Sigils</div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="footer-special-offer">
+                        <div className="offer-content">
+                        
+                            <div className="offer-text">
+                                <h3>Special Offer:</h3>
+                                <p>புத்தகம் வாங்கும் அனைவருக்கும் டாக்டர் ராஜ்குமார் அவர்களுடன் <strong>30 நிமிட FREE</strong> கலந்துரையாடல்!</p>
                             </div>
                         </div>
                     </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Landing from './pages/Landing';
 import Booking from './pages/Booking';
+import Success from './pages/Success';
 import './App.css';
 
 function App() {
@@ -52,6 +53,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/booking" element={<Booking />} />
+        <Route path="/success" element={<Success />} />
       </Routes>
     </Router>
   );

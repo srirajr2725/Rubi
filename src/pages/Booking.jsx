@@ -1,11 +1,37 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import './Booking.css';
 
 function Booking() {
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [isProcessing, setIsProcessing] = useState(false);
+    const navigate = useNavigate();
+
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
+
+    const handlePayment = () => {
+        if (!email || !phone) {
+            alert("தயவுசெய்து உங்கள் மின்னஞ்சல் மற்றும் தொலைபேசி எண்ணை உள்ளிடவும்.");
+            return;
+        }
+
+        setIsProcessing(true);
+
+        // UPI Deep Link for mobile redirection
+        const upiLink = `upi://pay?pa=eearnonline@ybl&pn=Ruby%20Wellness&am=99&cu=INR&tn=Course%20Payment`;
+        
+        // Attempt to open UPI app
+        window.location.href = upiLink;
+
+        // Simulate a delay for payment initiation and then redirect to success page
+        // In a real scenario, this would wait for a webhook/callback from a payment gateway
+        setTimeout(() => {
+            navigate('/success');
+        }, 2000);
+    };
 
     return (
         <div className="booking-page mesh-bg">
@@ -26,29 +52,69 @@ function Booking() {
                         <h1 className="booking-title">முழுமையான ஆரோக்கியப் பயணம்</h1>
                         <p className="booking-subtitle">இயற்கை முறையில் உங்களை நீங்களே குணப்படுத்திக் கொள்ளுங்கள்.</p>
 
-                        <div className="booking-details-card">
+                        <div className="booking-details-card modern-checkout-card">
                             <div className="price-tag-modern">
-                                <span className="old-price">₹1,999</span>
-                                <span className="new-price">₹499</span>
-                                <span className="discount-badge">75% OFF</span>
+                                <span className="old-price">₹999</span>
+                                <span className="new-price">₹99</span>
+                                <span className="discount-badge">90% OFF</span>
                             </div>
 
-                            <div className="booking-features">
-                                <div className="feature-item">
-                                    <span className="feature-icon">🌿</span>
-                                    <span>100+ இயற்கை தீர்வுகள்</span>
+                            <div className="checkout-message">
+                                Access to this purchase will be sent to this email
+                            </div>
+
+                            <div className="modern-form-group">
+                                <div className="input-field-wrapper">
+                                    <label>Email Address</label>
+                                    <input 
+                                        type="email" 
+                                        placeholder="example@gmail.com"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                    />
                                 </div>
-                                <div className="feature-item">
-                                    <span className="feature-icon">📱</span>
-                                    <span>டிஜிட்டல் வடிவில் உடனடி அணுகல்</span>
-                                </div>
-                                <div className="feature-item">
-                                    <span className="feature-icon">💎</span>
-                                    <span>வாழ்நாள் முழுவதும் பயன்படும் அறிவு</span>
+                                <div className="input-field-wrapper">
+                                    <label>Phone number *</label>
+                                    <div className="phone-input-container">
+                                        <span className="country-code">+91 ⌵</span>
+                                        <input 
+                                            type="tel" 
+                                            placeholder="1234567890"    
+                                            value={phone}
+                                            onChange={(e) => setPhone(e.target.value)}
+                                        />
+                                    </div>
                                 </div>
                             </div>
 
-                            <button className="confirm-booking-btn">இப்போதே வாங்கவும் (Buy Now)</button>
+                            <div className="pricing-summary">
+                                <div className="pricing-details-list">
+                                    <div className="pricing-item-detail">
+                                        <span>20 DLP + 100 NHS (Actual Price)</span>
+                                        <span className="strike">₹999</span>
+                                    </div>
+                                    <div className="pricing-item-detail">
+                                        <span>Bonus: Diagnosis Course</span>
+                                        <span className="free-text">FREE</span>
+                                    </div>
+                                </div>
+                                <div className="pricing-item">
+                                    <span>Sub Total</span>
+                                    <span>₹99</span>
+                                </div>
+                                <div className="pricing-item total-item">
+                                    <span>Total</span>
+                                    <span>₹99</span>
+                                </div>
+                            </div>
+
+                            <button 
+                                className={`confirm-booking-btn-modern ${isProcessing ? 'loading' : ''}`}
+                                onClick={handlePayment}
+                                disabled={isProcessing}
+                            >
+                                {isProcessing ? 'Verifying Payment...' : <>BUY NOW <span className="btn-arrow">→</span></>}
+                            </button>
                             <p className="secure-payment">🔒 பாதுகாப்பான பணப்பரிமாற்றம்</p>
                         </div>
 

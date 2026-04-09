@@ -134,30 +134,158 @@
     font-size: 1.4rem;
 }
 
-.confirm-booking-btn {
+.confirm-booking-btn-modern {
     width: 100%;
-    background: linear-gradient(135deg, var(--primary), #FF5252);
+    background: #000000;
     color: white;
-    padding: 20px;
+    padding: 22px;
     border: none;
-    border-radius: 16px;
-    font-size: 1.3rem;
-    font-weight: 900;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 10px 20px rgba(176, 0, 0, 0.2);
-    margin-bottom: 12px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 30px;
+    padding-right: 30px;
+    text-transform: uppercase;
 }
 
-.confirm-booking-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(176, 0, 0, 0.3);
+.confirm-booking-btn-modern:hover {
+    background: #1a1a1a;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-arrow {
+    font-size: 1.4rem;
+    font-weight: 300;
+}
+
+.modern-checkout-card {
+    border: 1px solid #f0f0f0;
+    padding: 0;
+}
+
+.price-tag-modern {
+    padding: 30px 30px 10px;
+}
+
+.checkout-message {
+    padding: 0 30px 20px;
+    font-size: 0.95rem;
+    color: #444;
+    font-weight: 500;
+}
+
+.modern-form-group {
+    padding: 0 30px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.input-field-wrapper {
+    position: relative;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    padding: 10px 15px;
+    background: #fff;
+    transition: border-color 0.3s ease;
+}
+
+.input-field-wrapper:focus-within {
+    border-color: #000;
+}
+
+.input-field-wrapper label {
+    display: block;
+    font-size: 0.75rem;
+    color: #888;
+    margin-bottom: 4px;
+    font-weight: 600;
+}
+
+.input-field-wrapper input {
+    width: 100%;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #222;
+    padding: 5px 0;
+}
+
+.phone-input-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.country-code {
+    font-size: 0.95rem;
+    color: #333;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.pricing-summary {
+    padding: 20px 30px;
+    border-top: 1px solid #f9f9f9;
+    margin-top: 10px;
+}
+
+.pricing-details-list {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px dashed #eee;
+}
+
+.pricing-item-detail {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    color: #777;
+    font-weight: 500;
+}
+
+.strike {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.free-text {
+    color: #27AE60;
+    font-weight: 800;
+}
+
+.pricing-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    font-size: 1rem;
+    color: #555;
+    font-weight: 500;
+}
+
+.total-item {
+    margin-top: 15px;
+    padding-top: 15px;
+    font-weight: 800;
+    color: #000;
+    font-size: 1.1rem;
 }
 
 .secure-payment {
     text-align: center;
     font-size: 0.9rem;
     color: #666;
+    padding-bottom: 20px;
 }
 
 .terms-conditions-modern {
