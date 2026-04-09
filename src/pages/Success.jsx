@@ -21,17 +21,17 @@ function Success() {
                     <div className="download-section">
                         <h3>உங்களுக்கான தயாரிப்புகள்:</h3>
                         <div className="download-grid">
-                            <a href="/course1.pdf" download className="download-btn">
+                            <a href="/20 DLP 100 NHS.pdf" download className="download-btn">
                                 <span className="btn-icon">📄</span>
                                 <div className="btn-text">
-                                    <span className="file-name">Course 1: 20 DLP solutions</span>
+                                    <span className="file-name">Life Problems & Natural Solutions</span>
                                     <span className="file-info">Digital PDF • Download Now</span>
                                 </div>
                             </a>
-                            <a href="/course2.pdf" download className="download-btn">
+                            <a href="/Bonus - Diagnosis.pdf" download className="download-btn">
                                 <span className="btn-icon">📄</span>
                                 <div className="btn-text">
-                                    <span className="file-name">Course 2: 100 NHS guide</span>
+                                    <span className="file-name">Diagnosis Master Class (Bonus)</span>
                                     <span className="file-info">Digital PDF • Download Now</span>
                                 </div>
                             </a>

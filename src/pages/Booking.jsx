@@ -18,19 +18,38 @@ function Booking() {
             return;
         }
 
-        setIsProcessing(true);
+        const options = {
+            key: "rzp_test_YOUR_KEY_HERE", // Replace with your Actual Razorpay Key ID
+            amount: 9900, // Amount in paise (99 INR = 9900 paise)
+            currency: "INR",
+            name: "Ruby Wellness",
+            description: "Natural Healing Course Bundle",
+            image: "/assets/logo.png", // Optional branding logo
+            handler: function (response) {
+                // This code runs only if payment is SUCCESSFUL
+                console.log("Payment Success:", response.razorpay_payment_id);
+                setIsProcessing(true);
+                // Navigate to success page only after bank-confirmed payment
+                navigate('/success');
+            },
+            prefill: {
+                name: "Customer",
+                email: email,
+                contact: phone
+            },
+            notes: {
+                address: "Ruby Wellness Office"
+            },
+            theme: {
+                color: "#B00000"
+            }
+        };
 
-        // UPI Deep Link for mobile redirection
-        const upiLink = `upi://pay?pa=eearnonline@ybl&pn=Ruby%20Wellness&am=99&cu=INR&tn=Course%20Payment`;
-        
-        // Attempt to open UPI app
-        window.location.href = upiLink;
-
-        // Simulate a delay for payment initiation and then redirect to success page
-        // In a real scenario, this would wait for a webhook/callback from a payment gateway
-        setTimeout(() => {
-            navigate('/success');
-        }, 2000);
+        const rzp = new window.Razorpay(options);
+        rzp.on('payment.failed', function (response){
+            alert("பணம் செலுத்துவதில் தோல்வி: " + response.error.description);
+        });
+        rzp.open();
     };
 
     return (
@@ -49,9 +68,6 @@ function Booking() {
                     </div>
 
                     <div className="booking-content-section">
-                        <h1 className="booking-title">முழுமையான ஆரோக்கியப் பயணம்</h1>
-                        <p className="booking-subtitle">இயற்கை முறையில் உங்களை நீங்களே குணப்படுத்திக் கொள்ளுங்கள்.</p>
-
                         <div className="booking-details-card modern-checkout-card">
                             <div className="price-tag-modern">
                                 <span className="old-price">₹999</span>
@@ -113,7 +129,7 @@ function Booking() {
                                 onClick={handlePayment}
                                 disabled={isProcessing}
                             >
-                                {isProcessing ? 'Verifying Payment...' : <>BUY NOW <span className="btn-arrow">→</span></>}
+                                {isProcessing ? 'Opening Payment...' : <>BUY NOW <span className="btn-arrow">→</span></>}
                             </button>
                             <p className="secure-payment">🔒 பாதுகாப்பான பணப்பரிமாற்றம்</p>
                         </div>
